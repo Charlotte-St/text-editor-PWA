@@ -25,15 +25,9 @@ warmStrategyCache({
 });
 
 registerRoute(({ request }) => request.mode === 'navigate', pageCache,
-  new StaleWhileRevalidate({
-    cacheName: 'asset-cache',
-    plugins: [
-      new CacheableResponsePlugin({
-        statuses: [0,200]
-      })
-    ]
-  })
-);
+  );
+
+//registerRoute(({request}) => { })
 
 //offlineFallback();
 registerRoute();
