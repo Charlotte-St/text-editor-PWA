@@ -1,0 +1,24 @@
+{
+  "short_name": "Manifest",
+  "name": "JATE Manifest",
+  "icons": [
+    {
+      "src": "./src/images/logo.png",
+      "type": "image/png",
+      "sizes": "96x96",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/images/icon_128x128.png",
+      "type": "image/png",
+      "sizes": "128x128",
+      "purpose": "any maskable"
+    }
+  ],
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": "./",
+  "description": "Just another text editor",
+  "background_color": "#7eb4e2",
+  "theme_color": "#7eb4e2"
+}
