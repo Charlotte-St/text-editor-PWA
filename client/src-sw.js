@@ -35,5 +35,5 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache,
   })
 );
 
-offlineFallback();
+//offlineFallback();
 registerRoute();
