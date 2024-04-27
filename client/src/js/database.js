@@ -13,11 +13,11 @@ const initdb = async () =>
   });
 
 //  a method that accepts some content and adds it to the database
-export const putDb = async (content) => {
+export const putDb = async (data) => {
   const jateDb = await openDB('jate', 1);
   const tx = jateDb.transaction('jate', 'readwrite');
   const store = tx.objectStore('jate');
-  const request = store.add({content: content});
+  const request = store.add({data: data});
   const result = await request;
 };
 
