@@ -1,21 +1,13 @@
 const { offlineFallback, warmStrategyCache } = require('workbox-recipes');
-const { CacheFirst, StaleWhileRevalidate } = require('workbox-strategies');
+const { CacheFirst , StaleWhileRevalidate} = require('workbox-strategies');
 const { registerRoute } = require('workbox-routing');
 const { CacheableResponsePlugin } = require('workbox-cacheable-response');
 const { ExpirationPlugin } = require('workbox-expiration');
 const { precacheAndRoute } = require('workbox-precaching/precacheAndRoute');
 
-const CACHE_NAME = 'cache-1';
-const urlsToCache = [
-  '/',
-  '/index.html',
-  '/css/style.css',
-  '/index.js',
-  '/images/icon.png'
-]
 precacheAndRoute(self.__WB_MANIFEST);
 
-const pageCache = new CacheFirst({
+/*const pageCache = new CacheFirst({
   cacheName: 'page-cache',
   plugins: [
     new CacheableResponsePlugin({
@@ -32,49 +24,20 @@ warmStrategyCache({
   strategy: pageCache,
 });
 
-registerRoute(({ request }) => request.mode === 'navigate', pageCache);
+registerRoute(({ request }) => request.mode === 'navigate', pageCache);*/
 
+// TODO: Implement asset caching
 registerRoute(
+  // Here we define the callback function that will filter the requests we want to cache (in this case, JS and CSS files)
   ({ request }) => ['style', 'script', 'worker'].includes(request.destination),
   new StaleWhileRevalidate({
+    // Name of the cache storage.
     cacheName: 'asset-cache',
     plugins: [
+      // This plugin will cache responses with these headers to a maximum-age of 30 days
       new CacheableResponsePlugin({
         statuses: [0, 200],
       }),
     ],
   })
 );
-
-self.addEventListener('install', (e) =>
-  e.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache))
-  )
-);
-
-self.addEventListener('activate', (e) =>
-  e.waitUntil(
-    caches.keys().then((keyList) =>
-      Promise.all(
-        keyList.map((key) => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
-      )
-    )
-  )
-);
-
-
-self.addEventListener('activate', (e) => {
-  e.waitUntil(clients.claim());
-});
-
-self.addEventListener('fetch', (e) =>
-  e.respondWith(caches.match(e.request).then((res) => res || fetch(e.request)))
-);
-
-
-//offlineFallback();
-registerRoute();
