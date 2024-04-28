@@ -21,7 +21,9 @@ const editor = new Editor();
 
 if (typeof editor === 'undefined') {
   loadSpinner();
-}
+} else {
+  main.textContent = getDb().value;
+};
 
 // Check if service workers are supported
 if ('serviceWorker' in navigator) {

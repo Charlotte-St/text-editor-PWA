@@ -19,6 +19,7 @@ export const putDb = async (data) => {
   const store = tx.objectStore('jate');
   const request = store.add({data: data});
   const result = await request;
+  return result
 };
 
 // a method that gets all the content from the database
@@ -28,6 +29,7 @@ export const getDb = async () => {
   const store = tx.objectStore('jate');
   const request = store.getAll();
   const result = await request;
+  console.log('result.value', result);
   return result
 };
 
