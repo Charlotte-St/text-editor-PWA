@@ -5,11 +5,7 @@ const { CacheableResponsePlugin } = require('workbox-cacheable-response');
 const { ExpirationPlugin } = require('workbox-expiration');
 const { precacheAndRoute } = require('workbox-precaching/precacheAndRoute');
 
-precacheAndRoute(
-  self.__WB_MANIFEST,
-  {url: '/main.bundle.js'},
-  {url: './src/client/dist/assets/icons/icon_96x96.png'}
-);
+precacheAndRoute(self.__WB_MANIFEST);
 
 const pageCache = new CacheFirst({
   cacheName: 'page-cache',
