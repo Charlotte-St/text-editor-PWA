@@ -7,8 +7,8 @@ const { precacheAndRoute } = require('workbox-precaching/precacheAndRoute');
 
 precacheAndRoute(
   self.__WB_MANIFEST,
-  {url: './main.bundle.js'},
-  {url: './assets/icons/icon_96x96.png'}
+  {url: '/main.bundle.js'},
+  {url: './src/dist/assets/icons/icon_96x96.png'}
 );
 
 const pageCache = new CacheFirst({
