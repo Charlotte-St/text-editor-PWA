@@ -5,7 +5,10 @@ const { CacheableResponsePlugin } = require('workbox-cacheable-response');
 const { ExpirationPlugin } = require('workbox-expiration');
 const { precacheAndRoute } = require('workbox-precaching/precacheAndRoute');
 
-precacheAndRoute(self.__WB_MANIFEST);
+precacheAndRoute(
+  self.__WB_MANIFEST,
+  {url: '/main.bundle.js'}
+);
 
 const pageCache = new CacheFirst({
   cacheName: 'page-cache',
