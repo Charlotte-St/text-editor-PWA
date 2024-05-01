@@ -6,6 +6,8 @@
 
 Just Another Text Editor is a text editor progressive web application. Users can use the text editor through the website or download a local version. Data entered into the text editor is saved in the browser and displayed if the user revisits the page/reopens the installed version of the app. 
 
+[Just Another Text Editor Deployed App](https://text-editor-pwa-jwtx.onrender.com/)
+
 ## Installation
 
 This application is hosted, so it does not require installation to use. Users can install a local version of the application by clicking the "Install" button in the application. 

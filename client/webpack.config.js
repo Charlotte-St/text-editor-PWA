@@ -33,8 +33,8 @@ module.exports = () => {
         description: 'Just another text editor...',
         background_color: '#272822',
         theme_color: '#272822',
-        start_url: '/',
-        publicPath: './dist',
+        start_url: './',
+        publicPath: './',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
