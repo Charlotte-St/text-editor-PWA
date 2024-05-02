@@ -27,12 +27,28 @@ warmStrategyCache({
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
 registerRoute(
-  ({ request }) => ['style', 'script', 'worker', 'img'].includes(request.destination),
+  ({ request }) => ['style', 'script', 'worker', 'image'].includes(request.destination),
   new StaleWhileRevalidate({
     cacheName: 'asset-cache',
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],
+      }),
+    ],
+  })
+);
+
+registerRoute(
+  ({ request }) => request.destination === 'image',
+  new CacheFirst({
+    cacheName: 'img-cache',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds: 30 * 24 * 60 * 60, 
       }),
     ],
   })

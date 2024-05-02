@@ -8,6 +8,26 @@ Just Another Text Editor is a text editor progressive web application. Users can
 
 [Just Another Text Editor Deployed App](https://text-editor-pwa-jwtx.onrender.com/)
 
+![JATE main page](/assets/image-1.png)
+
+JATE start page
+
+![JATE service worker](/assets/image-2.png)
+
+Service worker running for JATE
+
+![JATE IndexedDb](/assets/image-3.png)
+
+IndexedDB with data stored
+
+![JATE file cache](/assets/image-4.png)
+
+Cached files for JATE
+
+![Image of JATE installed desktop version](/assets/image-5.png)
+
+JATE installed locally
+
 ## Installation
 
 This application is hosted, so it does not require installation to use. Users can install a local version of the application by clicking the "Install" button in the application. 
